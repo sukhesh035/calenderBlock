@@ -1,0 +1,24 @@
+<div class="container" ng-controller="registerController">
+        <div class="row">
+            <md-content>
+                <div>
+                    <h1>Create Advertisement</h1>
+                    <md-input-container>
+                        <label>Title</label>
+                        <input ng-model="adData.title">
+                    </md-input-container>
+
+                    <div flex-gt-xs>
+                        <h4>Start date</h4>
+                        <input id="datetime" type="datetime-local" ng-model="adData.start">
+                    </div>
+                    <div flex-gt-xs>
+                        <h4>End date</h4>
+                        <input id="datetime" type="datetime-local" ng-model="adData.end">
+                    </div>
+                </div>
+                <md-button class="md-raised md-primary" ng-click="saveAd()">Save</md-button>
+            </md-content>
+        </div>
+
+    </div>
