@@ -17,17 +17,34 @@ app.post('/saveAd', function (req, res) {
 });
 
 app.post('/queryTime', function (req, res) {
-    //console.log(req.body);
+    console.log(req.body);
+    var temp = false;
     db.calendar_master.find(function (err, resp) {
+        if(resp){
 
-        resp.every(function (item) {
-            if (req.body.start > item.start && req.body.start < item.end) {
-                console.log("triggerend");
-                res.send('Number already exists');
-            }else{
-                res.send('Ok');
+            for(var i=0;i<resp.length;i++){
+                if (req.body.start > resp[i].start && req.body.start < resp[i].end) {
+                    temp = true;
+                    res.send('Number already exists');
+
+                }
             }
-        })
+
+            // resp.every(function (item) {
+            //     console.log("req.body.start:"+req.body.start);
+            //     console.log("item.start:"+item.start)
+            //     console.log("item.end:"+item.end);
+                
+            //     if (req.body.start > item.start && req.body.start < item.end) {
+            //         console.log("triggerend");
+            //         temp = true;
+            //         res.send('Number already exists');
+
+            //     }
+            // })
+            if(!temp)
+            res.send('Ok');
+        }
     })
 });
 

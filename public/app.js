@@ -16,6 +16,10 @@ app.config(function ($routeProvider) {
         });
 });
 
+app.config(['$qProvider', function ($qProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
+}]);
+
 app.controller("registerController", ["$scope", "$http", function ($scope, $http) {
     $scope.adData = {};
     console.log($scope.adData);
